@@ -93,8 +93,8 @@ Include these sections:
 
 Installation commands:
 
-git clone https://github.com/badol2407-tech/titanic-survival-predictor.git
-cd titanic-survival-predictor
+git clone https://github.com/badol2407-tech/student-performance-predictor.git
+cd student-performance-predictor
 
 python3 -m venv .venv
 source .venv/bin/activate
