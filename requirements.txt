@@ -1,7 +1,8 @@
-cloudpickle==3.1.2
+streamlit==1.63.0
+pandas==3.0.5
 joblib==1.6.0
-narwhals==2.26.0
 numpy==2.5.3
 scikit-learn==1.9.0
 scipy==1.18.1
 threadpoolctl==3.6.0
+narwhals==2.26.0
