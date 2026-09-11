@@ -1,7 +1,94 @@
 import streamlit as st
 import pandas as pd
 import joblib
+import streamlit as st
+import pandas as pd
+import joblib
 
+# Load trained model
+model = joblib.load("student_performance_model.joblib")
+
+# Page configuration
+st.set_page_config(
+    page_title="Student Performance Predictor",
+    page_icon="📚",
+    layout="centered"
+)
+
+# Title
+st.title("Student Performance Predictor")
+st.write("Enter the student's information to predict the final score.")
+
+st.divider()
+
+# Inputs
+study_hours = st.number_input(
+    "Study Hours",
+    min_value=0.0,
+    max_value=24.0,
+    value=5.0,
+    step=0.5
+)
+
+sleep_hours = st.number_input(
+    "Sleep Hours",
+    min_value=0.0,
+    max_value=24.0,
+    value=7.0,
+    step=0.5
+)
+
+attendance = st.number_input(
+    "Attendance (%)",
+    min_value=0.0,
+    max_value=100.0,
+    value=85.0,
+    step=1.0
+)
+
+previous_score = st.number_input(
+    "Previous Score",
+    min_value=0.0,
+    max_value=100.0,
+    value=75.0,
+    step=1.0
+)
+
+assignment_score = st.number_input(
+    "Assignment Score",
+    min_value=0.0,
+    max_value=100.0,
+    value=80.0,
+    step=1.0
+)
+
+st.divider()
+
+# Prediction
+if st.button("Predict Final Score", use_container_width=True):
+
+    new_student = pd.DataFrame([
+        {
+            "study_hours": study_hours,
+            "sleep_hours": sleep_hours,
+            "attendance": attendance,
+            "previous_score": previous_score,
+            "assignment_score": assignment_score
+        }
+    ])
+
+    prediction = model.predict(new_student)[0]
+
+    st.success(f"Predicted Final Score: {prediction:.2f} / 100")
+
+    st.info(
+        "This prediction is based on the trained machine learning model. "
+        "It should be treated as an estimate, not a guaranteed result."
+    )
+
+st.divider()
+
+st.caption("Student Performance Predictor • Machine Learning Project")
 # --------------------------------------------------
 # Page Configuration
 # --------------------------------------------------

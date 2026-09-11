@@ -1,6 +1,10 @@
 .venv/
 __pycache__/
 *.pyc
+.ipynb_checkpoints/
+.streamlit/secrets.toml.venv/
+__pycache__/
+*.pyc
 iris_svm_model.joblib
 student_score_model.joblib
 titanic_svm_model.joblib
